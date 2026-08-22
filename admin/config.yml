@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/gallery"
+public_folder: "/images/gallery"
+
+locale: "uk"
+
+collections:
+  - name: "gallery"
+    label: "Галерея робіт"
+    files:
+      - name: "gallery"
+        label: "Фотографії виконаних робіт"
+        file: "content/gallery.json"
+        description: "Ці фото показуються на Головній сторінці та на сторінці Галерея. Додайте нові, приберіть старі або поміняйте місцями."
+        fields:
+          - label: "Фотографії"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - {label: "Фото", name: "src", widget: "image", hint: "Завантажте фото виконаної роботи (JPG/PNG, бажано горизонтальне, до 2-3 МБ)."}
+              - {label: "Заголовок", name: "title", widget: "string", hint: "Наприклад: Монтаж КТП"}
+              - {label: "Короткий опис", name: "desc", widget: "string", hint: "Одне речення, наприклад: Комплектна трансформаторна підстанція"}
+              - {label: "Alt-текст для Google", name: "alt", widget: "string", hint: "Опис фото для пошукових систем, наприклад: Монтаж трансформаторної підстанції КТП у Києві"}

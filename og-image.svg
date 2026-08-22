@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">МЕС — електромонтажні роботи Київ та Київська область</title>
+  <desc id="desc">Кабельні лінії 0,4-10 кВ, монтаж ТП, РП, КТП, електролабораторія, заземлення та блискавкозахист у Києві, Київській області та по Україні.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060a10"/>
+      <stop offset="1" stop-color="#0f1820"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8a020"/>
+      <stop offset="1" stop-color="#00c8e8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M0 520 C220 440 340 590 560 505 S930 410 1200 500 V630 H0 Z" fill="#0b1118"/>
+  <g opacity=".12" stroke="#e8a020">
+    <path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200"/>
+    <path d="M120 0V630M300 0V630M480 0V630M660 0V630M840 0V630M1020 0V630"/>
+  </g>
+  <g transform="translate(86 94)">
+    <rect x="0" y="0" width="96" height="96" fill="#111a24" stroke="#e8a020" stroke-width="4"/>
+    <path d="M55 15L30 50h20l-5 35 30-40H55l10-30z" fill="#e8a020"/>
+  </g>
+  <text x="210" y="135" fill="#f0f4f8" font-family="Arial, sans-serif" font-size="44" font-weight="700">МЕС</text>
+  <text x="210" y="178" fill="#e8a020" font-family="Arial, sans-serif" font-size="24" letter-spacing="3">МОНТАЖЕНЕРГОСИСТЕМ</text>
+  <text x="86" y="300" fill="#f0f4f8" font-family="Arial, sans-serif" font-size="70" font-weight="700">Електромонтажні роботи</text>
+  <text x="86" y="374" fill="url(#accent)" font-family="Arial, sans-serif" font-size="58" font-weight="700">Київ та Київська область</text>
+  <text x="86" y="460" fill="#a8b3bf" font-family="Arial, sans-serif" font-size="30">КЛ 0,4-10 кВ • ТП • РП • КТП • електролабораторія</text>
+  <text x="86" y="515" fill="#f0f4f8" font-family="Arial, sans-serif" font-size="28">+380 (98) 521 22 69 • mec.lls@ukr.net</text>
+</svg>
