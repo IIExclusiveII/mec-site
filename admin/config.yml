@@ -25,3 +25,87 @@ collections:
               - {label: "Заголовок", name: "title", widget: "string", hint: "Наприклад: Монтаж КТП"}
               - {label: "Короткий опис", name: "desc", widget: "string", hint: "Одне речення, наприклад: Комплектна трансформаторна підстанція"}
               - {label: "Alt-текст для Google", name: "alt", widget: "string", hint: "Опис фото для пошукових систем, наприклад: Монтаж трансформаторної підстанції КТП у Києві"}
+
+  - name: "services"
+    label: "Послуги"
+    files:
+      - name: "services"
+        label: "Список послуг"
+        file: "content/services.json"
+        description: "Показуються на Головній (перші 6) і повністю на сторінці Послуги."
+        fields:
+          - label: "Послуги"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - label: "Іконка"
+                name: "icon"
+                widget: "select"
+                hint: "Візуальна іконка картки"
+                options:
+                  - {label: "Кабель", value: "cable"}
+                  - {label: "Панель/ТП", value: "panel"}
+                  - {label: "Щит/сертифікат", value: "shield"}
+                  - {label: "Індикатор", value: "gauge"}
+                  - {label: "Заземлення", value: "ground"}
+                  - {label: "Лабораторія", value: "lab"}
+                  - {label: "Блискавка", value: "bolt"}
+                  - {label: "Пошук", value: "search"}
+                  - {label: "Випробування", value: "test"}
+                  - {label: "Гайковий ключ", value: "wrench"}
+                  - {label: "Автовишка", value: "crane"}
+                  - {label: "Живлення", value: "power"}
+                  - {label: "Будівля/ТП", value: "building"}
+                  - {label: "Документ", value: "document"}
+              - {label: "Назва послуги", name: "title", widget: "string"}
+              - {label: "Опис", name: "desc", widget: "text"}
+
+  - name: "contacts"
+    label: "Контакти"
+    files:
+      - name: "contacts"
+        label: "Телефон, email, графік роботи"
+        file: "content/contacts.json"
+        description: "Ці дані показуються на всіх сторінках сайту — у шапці, футері та на сторінці Контакти."
+        fields:
+          - {label: "Телефон для посилань tel: (тільки цифри, з +)", name: "phoneHref", widget: "string", hint: "Наприклад: +380985212269"}
+          - {label: "Телефон для показу на сайті", name: "phoneDisplay", widget: "string", hint: "Наприклад: +380 (98) 521 22 69"}
+          - {label: "E-mail", name: "email", widget: "string"}
+          - {label: "Графік Пн-Пт", name: "hoursWeekday", widget: "string"}
+          - {label: "Графік Сб-Нд", name: "hoursWeekend", widget: "string"}
+          - {label: "Текст про аварійний виїзд", name: "emergencyNote", widget: "string"}
+          - {label: "Зона обслуговування (текст)", name: "serviceArea", widget: "text"}
+
+  - name: "about"
+    label: "Про нас"
+    files:
+      - name: "about"
+        label: "Текст сторінки Про нас"
+        file: "content/about.json"
+        fields:
+          - {label: "Абзаци тексту", name: "intro", widget: "list", field: {label: "Абзац", name: "paragraph", widget: "text"}}
+          - {label: "Список переваг (короткі пункти)", name: "highlights", widget: "list", field: {label: "Пункт", name: "item", widget: "string"}}
+          - label: "Картки фактів (4 штуки)"
+            name: "facts"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - {label: "Заголовок", name: "title", widget: "string"}
+              - {label: "Текст", name: "text", widget: "string"}
+
+  - name: "faq"
+    label: "FAQ"
+    files:
+      - name: "faq"
+        label: "Питання та відповіді"
+        file: "content/faq.json"
+        description: "Перші 3 показуються на Головній, усі — на сторінці FAQ."
+        fields:
+          - label: "Питання"
+            name: "items"
+            widget: "list"
+            summary: "{{question}}"
+            fields:
+              - {label: "Питання", name: "question", widget: "string"}
+              - {label: "Відповідь", name: "answer", widget: "text"}

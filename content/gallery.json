@@ -1,50 +1,52 @@
-[
-  {
-    "src": "https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/d0e878391e368389324ddca7c97371d5fcf20288.jpg",
-    "alt": "Прокладка та монтаж кабельних ліній 10кВ у Києві та Київській області",
-    "title": "Монтаж кабельних ліній 10кВ",
-    "desc": "Прокладка та підключення силових кабелів"
-  },
-  {
-    "src": "https://kimi-web-img.moonshot.cn/img/www.nexans.ma/459fe5d6a33363c4c4b78cf8edfdea432f249d91.jpg",
-    "alt": "Монтаж та обслуговування трансформаторних підстанцій КТП у Києві",
-    "title": "Монтаж КТП",
-    "desc": "Комплектна трансформаторна підстанція"
-  },
-  {
-    "src": "https://kimi-web-img.moonshot.cn/img/prismcalibration.com/a0fc9691460d94d3f1d76ea7b4bb1cdfe3ba7461.jpg",
-    "alt": "Сертифікована електролабораторія Київ для вимірювань та протоколів",
-    "title": "Електролабораторія",
-    "desc": "Випробування та вимірювання"
-  },
-  {
-    "src": "https://kimi-web-img.moonshot.cn/img/www.easypower.com/8a373056352e3e0325169efb7990f83d14920f52.png",
-    "alt": "Монтаж контуру заземлення та блискавкозахисту в Київській області",
-    "title": "Монтаж заземлення",
-    "desc": "Контур заземлення промислового об'єкта"
-  },
-  {
-    "src": "https://kimi-web-img.moonshot.cn/img/image.made-in-china.com/aa862252526dbcc6ecb875410fe9058c1f39f0be.webp",
-    "alt": "Монтаж повітряних ліній електропередач 0,4кВ та 10кВ Київська область",
-    "title": "Повітряні лінії",
-    "desc": "Монтаж ЛЕП 0,4кВ та 10кВ"
-  },
-  {
-    "src": "https://kimi-web-img.moonshot.cn/img/img.freepik.com/925036a7150b0fc7469efd8a8b0e59f077650711.jpg",
-    "alt": "Аварійний ремонт силового кабелю 0,4кВ та 10кВ у Києві",
-    "title": "Ремонт КЛ",
-    "desc": "Аварійний ремонт кабельних ліній"
-  },
-  {
-    "src": "https://kimi-web-img.moonshot.cn/img/image.made-in-china.com/1537206b9ba0b779ebb8a94e4360c6c51985ef76.webp",
-    "alt": "Високовольтні випробування кабельних ліній 10кВ електролабораторією",
-    "title": "Високовольтні випробування",
-    "desc": "Випробування КЛ 10кВ 18кВ 0,1Гц"
-  },
-  {
-    "src": "https://kimi-web-img.moonshot.cn/img/elkor.ua/3f3ad2bc862ea801d6eb55fd14e714b66335e9d2.jpg",
-    "alt": "Планове обслуговування ТП РП КТП у Києві та Київській області",
-    "title": "Обслуговування ТП",
-    "desc": "Планове технічне обслуговування"
-  }
-]
+{
+  "items": [
+    {
+      "src": "https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/d0e878391e368389324ddca7c97371d5fcf20288.jpg",
+      "alt": "Прокладка та монтаж кабельних ліній 10кВ у Києві та Київській області",
+      "title": "Монтаж кабельних ліній 10кВ",
+      "desc": "Прокладка та підключення силових кабелів"
+    },
+    {
+      "src": "https://kimi-web-img.moonshot.cn/img/www.nexans.ma/459fe5d6a33363c4c4b78cf8edfdea432f249d91.jpg",
+      "alt": "Монтаж та обслуговування трансформаторних підстанцій КТП у Києві",
+      "title": "Монтаж КТП",
+      "desc": "Комплектна трансформаторна підстанція"
+    },
+    {
+      "src": "https://kimi-web-img.moonshot.cn/img/prismcalibration.com/a0fc9691460d94d3f1d76ea7b4bb1cdfe3ba7461.jpg",
+      "alt": "Сертифікована електролабораторія Київ для вимірювань та протоколів",
+      "title": "Електролабораторія",
+      "desc": "Випробування та вимірювання"
+    },
+    {
+      "src": "https://kimi-web-img.moonshot.cn/img/www.easypower.com/8a373056352e3e0325169efb7990f83d14920f52.png",
+      "alt": "Монтаж контуру заземлення та блискавкозахисту в Київській області",
+      "title": "Монтаж заземлення",
+      "desc": "Контур заземлення промислового об'єкта"
+    },
+    {
+      "src": "https://kimi-web-img.moonshot.cn/img/image.made-in-china.com/aa862252526dbcc6ecb875410fe9058c1f39f0be.webp",
+      "alt": "Монтаж повітряних ліній електропередач 0,4кВ та 10кВ Київська область",
+      "title": "Повітряні лінії",
+      "desc": "Монтаж ЛЕП 0,4кВ та 10кВ"
+    },
+    {
+      "src": "https://kimi-web-img.moonshot.cn/img/img.freepik.com/925036a7150b0fc7469efd8a8b0e59f077650711.jpg",
+      "alt": "Аварійний ремонт силового кабелю 0,4кВ та 10кВ у Києві",
+      "title": "Ремонт КЛ",
+      "desc": "Аварійний ремонт кабельних ліній"
+    },
+    {
+      "src": "https://kimi-web-img.moonshot.cn/img/image.made-in-china.com/1537206b9ba0b779ebb8a94e4360c6c51985ef76.webp",
+      "alt": "Високовольтні випробування кабельних ліній 10кВ електролабораторією",
+      "title": "Високовольтні випробування",
+      "desc": "Випробування КЛ 10кВ 18кВ 0,1Гц"
+    },
+    {
+      "src": "https://kimi-web-img.moonshot.cn/img/elkor.ua/3f3ad2bc862ea801d6eb55fd14e714b66335e9d2.jpg",
+      "alt": "Планове обслуговування ТП РП КТП у Києві та Київській області",
+      "title": "Обслуговування ТП",
+      "desc": "Планове технічне обслуговування"
+    }
+  ]
+}

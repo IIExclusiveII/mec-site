@@ -61,6 +61,8 @@
 
 
 
+
+
     :root {
       --bg: #060a10; --bg2: #0b1118; --bg3: #0f1820;
       --gold: #e8a020; --gold2: #f5c040; --gold3: #c88010;
@@ -761,6 +763,66 @@
     .process-step h3{font-family:var(--font-display);font-size:16px;font-weight:500;margin-bottom:8px;color:var(--white)}
     .process-step p{font-size:13px;color:var(--gray);line-height:1.6}
     @media(max-width:768px){.process-steps{grid-template-columns:1fr}.page-hero{padding:120px 0 44px}}
+
+    .nav-links a.active{color:var(--white)}
+    .nav-links a.active::after{transform:scaleX(1)}
+    #mobile-menu a.active{color:var(--gold)}
+    .page-hero{padding:150px 0 64px;position:relative;overflow:hidden}
+    .page-hero .hero-glow-1{top:-10%}
+    .breadcrumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--gray);letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px}
+    .breadcrumb a{color:var(--gray);text-decoration:none;transition:color .2s}
+    .breadcrumb a:hover{color:var(--gold)}
+    .breadcrumb svg{width:10px;height:10px;flex-shrink:0}
+    .page-hero-lead{font-size:16px;color:var(--gray);max-width:720px;margin-top:20px;line-height:1.8}
+    .page-hero h1{opacity:0;animation:fadeUp .8s .1s forwards}
+    .page-hero .breadcrumb{opacity:0;animation:fadeUp .6s forwards}
+    .page-hero .page-hero-lead{opacity:0;animation:fadeUp .8s .25s forwards}
+    .cta-band{padding:90px 0;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);border-top:1px solid var(--gray2);text-align:center}
+    .cta-band .section-title{margin-bottom:20px}
+    .cta-band-lead{font-size:15px;color:var(--gray);max-width:560px;margin:0 auto 36px}
+    .cta-band-actions{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+    .content-block{font-size:15px;color:var(--gray);line-height:1.85}
+    .content-block p+p{margin-top:16px}
+    .content-block strong{color:var(--white);font-weight:600}
+    .related-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .related-links a{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);text-decoration:none;border:1px solid rgba(0,200,232,.3);padding:10px 18px;transition:border-color .2s,color .2s,background .2s}
+    .related-links a:hover{border-color:var(--cyan);background:rgba(0,200,232,.08)}
+    .process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px}
+    .process-step{background:var(--bg2);border:1px solid var(--gray2);padding:28px 24px}
+    .process-step-num{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--gold);margin-bottom:12px}
+    .process-step h3{font-family:var(--font-display);font-size:16px;font-weight:500;margin-bottom:8px;color:var(--white)}
+    .process-step p{font-size:13px;color:var(--gray);line-height:1.6}
+    @media(max-width:768px){.process-steps{grid-template-columns:1fr}.page-hero{padding:120px 0 44px}}
+
+    .nav-links a.active{color:var(--white)}
+    .nav-links a.active::after{transform:scaleX(1)}
+    #mobile-menu a.active{color:var(--gold)}
+    .page-hero{padding:150px 0 64px;position:relative;overflow:hidden}
+    .page-hero .hero-glow-1{top:-10%}
+    .breadcrumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--gray);letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px}
+    .breadcrumb a{color:var(--gray);text-decoration:none;transition:color .2s}
+    .breadcrumb a:hover{color:var(--gold)}
+    .breadcrumb svg{width:10px;height:10px;flex-shrink:0}
+    .page-hero-lead{font-size:16px;color:var(--gray);max-width:720px;margin-top:20px;line-height:1.8}
+    .page-hero h1{opacity:0;animation:fadeUp .8s .1s forwards}
+    .page-hero .breadcrumb{opacity:0;animation:fadeUp .6s forwards}
+    .page-hero .page-hero-lead{opacity:0;animation:fadeUp .8s .25s forwards}
+    .cta-band{padding:90px 0;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);border-top:1px solid var(--gray2);text-align:center}
+    .cta-band .section-title{margin-bottom:20px}
+    .cta-band-lead{font-size:15px;color:var(--gray);max-width:560px;margin:0 auto 36px}
+    .cta-band-actions{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+    .content-block{font-size:15px;color:var(--gray);line-height:1.85}
+    .content-block p+p{margin-top:16px}
+    .content-block strong{color:var(--white);font-weight:600}
+    .related-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .related-links a{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);text-decoration:none;border:1px solid rgba(0,200,232,.3);padding:10px 18px;transition:border-color .2s,color .2s,background .2s}
+    .related-links a:hover{border-color:var(--cyan);background:rgba(0,200,232,.08)}
+    .process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px}
+    .process-step{background:var(--bg2);border:1px solid var(--gray2);padding:28px 24px}
+    .process-step-num{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--gold);margin-bottom:12px}
+    .process-step h3{font-family:var(--font-display);font-size:16px;font-weight:500;margin-bottom:8px;color:var(--white)}
+    .process-step p{font-size:13px;color:var(--gray);line-height:1.6}
+    @media(max-width:768px){.process-steps{grid-template-columns:1fr}.page-hero{padding:120px 0 44px}}
 </style>
   <script type="application/ld+json">
   {
@@ -927,7 +989,7 @@
       <h2 class="section-title">Замовте <span class="text-gold">роботи МЕС</span></h2>
       <p class="cta-band-lead">Зателефонуйте або залиште заявку &#8212; передзвонимо протягом 15 хвилин у робочий час.</p>
       <div class="cta-band-actions">
-        <a href="tel:+380985212269" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.12z"/></svg>+380 (98) 521 22 69</a>
+        <a href="tel:+380985212269" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.12z"/></svg><span data-field="phone-text">+380 (98) 521 22 69</span></a>
         <a href="/kontakty.html" class="btn-outline">Залишити заявку &#8594;</a>
       </div>
     </div>
@@ -969,10 +1031,10 @@
       <div class="footer-col">
         <div class="footer-col-title">Контакти</div>
         <div class="footer-contact-item">
-          <a href="tel:+380985212269">+380 (98) 521 22 69</a><br>
-          <a href="mailto:mec.lls@ukr.net">mec.lls@ukr.net</a><br>
-          <span style="color:var(--gray)">Пн&#8211;Пт: 8:00&#8211;18:00</span><br>
-          <span style="color:var(--gold);display:flex;align-items:center;gap:6px;margin-top:4px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Аварійний виїзд 24/7</span>
+          <a href="tel:+380985212269"><span data-field="phone-text">+380 (98) 521 22 69</span></a><br>
+          <a href="mailto:mec.lls@ukr.net"><span data-field="email-text">mec.lls@ukr.net</span></a><br>
+          <span style="color:var(--gray)">Пн&#8211;Пт: <span data-field="hours-weekday">8:00&#8211;18:00</span></span><br>
+          <span style="color:var(--gold);display:flex;align-items:center;gap:6px;margin-top:4px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span data-field="emergency-note">Аварійний виїзд 24/7</span></span>
         </div>
       </div>
     </div>
@@ -1064,8 +1126,19 @@ function wireReveals(scope){
   reveals.forEach(r=>{r.classList.add('reveal-wired');revObs.observe(r);});
 }
 wireReveals();
-const faqItems=document.querySelectorAll('.faq-item');
-if(faqItems.length){
+function escapeHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+// Decap CMS "file" collections store a list field as {items:[...]}, not a
+// bare array — this unwraps that shape while still accepting a bare array
+// (e.g. if someone hand-edits the JSON) so both forms work.
+function unwrapItems(raw){
+  if(Array.isArray(raw))return raw;
+  if(raw&&Array.isArray(raw.items))return raw.items;
+  return [];
+}
+function wireFaqAccordion(scope){
+  const root=scope||document;
+  const faqItems=root.querySelectorAll('.faq-item');
+  if(!faqItems.length)return;
   faqItems.forEach(item=>{
     const question=item.querySelector('.faq-question');
     question.addEventListener('click',()=>{
@@ -1075,6 +1148,128 @@ if(faqItems.length){
     });
   });
 }
+wireFaqAccordion();
+const PLUS_SVG_JS='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+function faqItemHTML(item,index){
+  const delay=(index%2)+1;
+  return '<div class="faq-item reveal reveal-delay-'+delay+'">'
+    +'<div class="faq-question"><div class="faq-question-text">'+escapeHtml(item.question)+'</div><div class="faq-toggle">'+PLUS_SVG_JS+'</div></div>'
+    +'<div class="faq-answer"><div class="faq-answer-text">'+escapeHtml(item.answer)+'</div></div>'
+    +'</div>';
+}
+async function loadFaqData(){
+  const lists=document.querySelectorAll('.faq-list[data-dynamic-faq]');
+  if(!lists.length)return;
+  let items=[];
+  try{
+    const res=await fetch('/content/faq.json',{cache:'no-store'});
+    if(res.ok)items=unwrapItems(await res.json());
+  }catch(e){}
+  lists.forEach(list=>{
+    const limit=list.dataset.limit?parseInt(list.dataset.limit,10):items.length;
+    const subset=items.slice(0,limit);
+    if(!subset.length)return;
+    list.innerHTML=subset.map((it,i)=>faqItemHTML(it,i)).join('');
+    wireFaqAccordion(list);
+    wireReveals(list);
+  });
+}
+loadFaqData();
+// ─── Services: same idea as the gallery — list lives in /content/services.json
+// so the owner can add/edit/reorder services from /admin ───
+const SERVICE_ICONS={
+  cable:'<path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>',
+  panel:'<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+  shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  gauge:'<circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/>',
+  ground:'<path d="M12 22V12M12 12l-4-4M12 12l4-4"/><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/>',
+  lab:'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
+  bolt:'<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>',
+  search:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+  test:'<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>',
+  wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+  crane:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+  power:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  building:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+  document:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>'
+};
+const SERVICE_ICON_ORDER=Object.keys(SERVICE_ICONS);
+function serviceIconSvg(name,index){
+  const path=SERVICE_ICONS[name]||SERVICE_ICONS[SERVICE_ICON_ORDER[index%SERVICE_ICON_ORDER.length]];
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+path+'</svg>';
+}
+function serviceCardHTML(item,index){
+  const delay=(index%3)+1;
+  const num=String(index+1).padStart(2,'0');
+  return '<div class="svc-card reveal reveal-delay-'+delay+'">'
+    +'<div class="svc-num">'+num+'</div>'
+    +'<div class="svc-icon">'+serviceIconSvg(item.icon,index)+'</div>'
+    +'<h3 class="svc-title">'+escapeHtml(item.title)+'</h3>'
+    +'<p class="svc-desc">'+escapeHtml(item.desc)+'</p>'
+    +'</div>';
+}
+async function loadServices(){
+  const grids=document.querySelectorAll('.services-grid[data-dynamic-services]');
+  if(!grids.length)return;
+  let items=[];
+  try{
+    const res=await fetch('/content/services.json',{cache:'no-store'});
+    if(res.ok)items=unwrapItems(await res.json());
+  }catch(e){}
+  grids.forEach(grid=>{
+    const limit=grid.dataset.limit?parseInt(grid.dataset.limit,10):items.length;
+    const subset=items.slice(0,limit);
+    if(!subset.length)return;
+    grid.innerHTML=subset.map((it,i)=>serviceCardHTML(it,i)).join('');
+    wireReveals(grid);
+  });
+}
+loadServices();
+// ─── About page text blocks from /content/about.json ───
+async function loadAbout(){
+  const introEl=document.querySelector('[data-about="intro"]');
+  const listEl=document.querySelector('[data-about="highlights"]');
+  const factsEl=document.querySelector('[data-about="facts"]');
+  if(!introEl&&!listEl&&!factsEl)return;
+  let a=null;
+  try{
+    const res=await fetch('/content/about.json',{cache:'no-store'});
+    if(res.ok)a=await res.json();
+  }catch(e){}
+  if(!a)return;
+  if(introEl&&Array.isArray(a.intro)&&a.intro.length){
+    introEl.innerHTML=a.intro.map(p=>'<p>'+escapeHtml(p)+'</p>').join('');
+  }
+  if(listEl&&Array.isArray(a.highlights)&&a.highlights.length){
+    listEl.innerHTML=a.highlights.map(h=>'<li>'+escapeHtml(h)+'</li>').join('');
+  }
+  if(factsEl&&Array.isArray(a.facts)&&a.facts.length){
+    const factIcons=[SERVICE_ICONS.shield,SERVICE_ICONS.gauge,SERVICE_ICONS.power,SERVICE_ICONS.document];
+    factsEl.innerHTML=a.facts.map((f,i)=>'<div class="fact-card"><svg class="fact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+(factIcons[i%factIcons.length])+'</svg><div class="fact-title">'+escapeHtml(f.title)+'</div><div class="fact-text">'+escapeHtml(f.text)+'</div></div>').join('');
+  }
+}
+loadAbout();
+// ─── Contacts: phone/email/hours everywhere on the site come from
+// /content/contacts.json so the owner can update them from /admin in one place ───
+async function loadContacts(){
+  let c=null;
+  try{
+    const res=await fetch('/content/contacts.json',{cache:'no-store'});
+    if(res.ok)c=await res.json();
+  }catch(e){}
+  if(!c)return;
+  if(c.phoneHref){document.querySelectorAll('a[href^="tel:"]').forEach(a=>{a.href='tel:'+c.phoneHref;});}
+  if(c.email){document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{a.href='mailto:'+c.email;});}
+  const map={
+    'phone-text':c.phoneDisplay,'email-text':c.email,'hours-weekday':c.hoursWeekday,
+    'hours-weekend':c.hoursWeekend,'emergency-note':c.emergencyNote,'service-area':c.serviceArea
+  };
+  Object.keys(map).forEach(key=>{
+    if(!map[key])return;
+    document.querySelectorAll('[data-field="'+key+'"]').forEach(el=>{el.textContent=map[key];});
+  });
+}
+loadContacts();
 // ─── Gallery: photos are loaded from /content/gallery.json so the owner can
 // add new work photos via /admin without touching any code ───
 let galleryData=[];
@@ -1133,7 +1328,7 @@ async function loadGallery(){
   let items=[];
   try{
     const res=await fetch('/content/gallery.json',{cache:'no-store'});
-    if(res.ok)items=await res.json();
+    if(res.ok)items=unwrapItems(await res.json());
   }catch(e){}
   grids.forEach(grid=>{
     const limit=grid.dataset.limit?parseInt(grid.dataset.limit,10):items.length;
