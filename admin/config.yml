@@ -109,3 +109,28 @@ collections:
             fields:
               - {label: "Питання", name: "question", widget: "string"}
               - {label: "Відповідь", name: "answer", widget: "text"}
+
+  - name: "map"
+    label: "Карта об'єктів"
+    files:
+      - name: "map"
+        label: "Позначки виконаних робіт на карті"
+        file: "content/map.json"
+        description: "Карта показується на сторінці «Про нас». Кожна позначка — окремий об'єкт. Обов'язкові тільки координати; опис і фото — за бажанням. Без опису й фото позначка на карті буде видна, але при натисканні на неї нічого не відкриється."
+        fields:
+          - label: "Позначки"
+            name: "items"
+            widget: "list"
+            summary: "{{address}}"
+            fields:
+              - label: "Координати або посилання Google Maps"
+                name: "location"
+                widget: "string"
+                hint: "На Google Maps клацніть правою кнопкою миші по потрібному місцю — вгорі списку зʼявляться координати, натисніть на них щоб скопіювати, і вставте сюди. Приклад: 50.4501, 30.5234. Коротке посилання (maps.app.goo.gl) не підійде — потрібні саме координати або повне посилання з @координатами."
+              - {label: "Адреса (текст для показу у вікні)", name: "address", widget: "string", required: false}
+              - {label: "Опис виконаної роботи", name: "description", widget: "text", required: false}
+              - label: "Фото об'єкта"
+                name: "photos"
+                widget: "list"
+                required: false
+                field: {label: "Фото", name: "image", widget: "image", media_folder: "/images/map", public_folder: "/images/map"}
