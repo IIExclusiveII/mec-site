@@ -1176,13 +1176,16 @@
        положенні (≥500px). У вертикальному телефоні — прихована, hero як зараз. */
     @media (min-width:768px),
            (orientation:landscape) and (min-width:500px){
-      .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,0.95fr);gap:clamp(18px,3vw,56px);align-items:center}
-      .hero-content{max-width:none}
-      .hero-visual{display:block;opacity:0;animation:fadeUp .9s 1s forwards}
+      .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,0.8fr);
+        grid-template-areas:"text visual" "stats stats";
+        column-gap:clamp(18px,3vw,56px);row-gap:clamp(32px,6vh,64px);align-items:start}
+      .hero-content{grid-area:text;max-width:none}
+      .hero-visual{grid-area:visual;display:block;opacity:0;animation:fadeUp .9s 1s forwards;align-self:center}
+      .hero-stats{grid-area:stats;margin-top:0}
       .hv-frame{padding:14px}
     }
     @media (min-width:1200px){
-      .hero-inner{grid-template-columns:minmax(0,1fr) minmax(400px,1.22fr);gap:56px}
+      .hero-inner{grid-template-columns:minmax(0,1fr) minmax(380px,1.15fr);column-gap:56px}
     }
     @media(prefers-reduced-motion:reduce){
       .hv-flow{animation:none;stroke-dasharray:2 9;opacity:.5}
@@ -1332,12 +1335,6 @@
         </a>
         <a href="/poslugy.html" class="btn-outline">Наші послуги &#8594;</a>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-num" data-target="2015">2015</div><div class="hero-stat-label">Рік заснування</div></div>
-        <div class="hero-stat"><div class="hero-stat-num" data-count="1000">0</div><div class="hero-stat-label">Реалізованих об'єктів</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">10 кВ</div><div class="hero-stat-label">Клас напруги</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Технічний звіт</div></div>
-      </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
       <div class="hv-frame">
@@ -1410,6 +1407,12 @@
         </svg>
       </div>
     </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num" data-target="2015">2015</div><div class="hero-stat-label">Рік заснування</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-count="1000">0</div><div class="hero-stat-label">Реалізованих об'єктів</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">10 кВ</div><div class="hero-stat-label">Клас напруги</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Технічний звіт</div></div>
+      </div>
     </div>
   </div>
 </section>
