@@ -121,7 +121,7 @@ collections:
           - label: "Позначки"
             name: "items"
             widget: "list"
-            summary: "{{address}}"
+            summary: "{{location}}"
             fields:
               - label: "Місце: посилання Google Maps, координати, або адреса"
                 name: "location"
