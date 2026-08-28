@@ -1,3 +1,6 @@
 _backup_before_multipage/
 .DS_Store
 Thumbs.db
+
+# Local Netlify folder
+.netlify
