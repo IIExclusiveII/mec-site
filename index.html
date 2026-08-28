@@ -1172,13 +1172,17 @@
     .hv-flow.f4{animation-delay:-.4s}
     @keyframes hvflow{to{stroke-dashoffset:-12.1}}
     @keyframes hvpulse{0%,100%{opacity:.18}50%{opacity:.5}}
-    /* Показувати: планшети / ноутбуки / ПК (≥768px) АБО телефон у горизонтальному положенні.
-       У вертикальному телефоні (вузький екран, portrait) — прихована, hero як зараз. */
+    /* Показувати: планшети / ноутбуки / ПК (≥768px) АБО будь-який екран у горизонтальному
+       положенні (≥500px). У вертикальному телефоні — прихована, hero як зараз. */
     @media (min-width:768px),
-           (orientation:landscape) and (min-width:560px) and (min-height:320px) and (max-height:500px){
-      .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,33vw,440px);gap:clamp(20px,3.5vw,64px);align-items:center}
+           (orientation:landscape) and (min-width:500px){
+      .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,0.95fr);gap:clamp(18px,3vw,56px);align-items:center}
       .hero-content{max-width:none}
       .hero-visual{display:block;opacity:0;animation:fadeUp .9s 1s forwards}
+      .hv-frame{padding:14px}
+    }
+    @media (min-width:1200px){
+      .hero-inner{grid-template-columns:minmax(0,1fr) minmax(400px,1.22fr);gap:56px}
     }
     @media(prefers-reduced-motion:reduce){
       .hv-flow{animation:none;stroke-dasharray:2 9;opacity:.5}
