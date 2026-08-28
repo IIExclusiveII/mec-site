@@ -116,8 +116,10 @@
     #mobile-menu.open{transform:translateX(0)}
     #mobile-menu a{font-family:var(--font-display);font-size:32px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--white);text-decoration:none;transition:color .2s}
     #mobile-menu a:hover{color:var(--gold)}
-    #mobile-close{position:absolute;top:24px;right:24px;background:none;border:none;cursor:pointer;color:var(--white)}
-    #mobile-close svg{width:28px;height:28px}
+    .nav-burger{position:relative}
+    .nav-burger-x{display:none}
+    body:has(#mobile-menu.open) .nav-burger-bars{display:none}
+    body:has(#mobile-menu.open) .nav-burger-x{display:block}
     section{position:relative;z-index:1}
     .container{max-width:1280px;margin:0 auto;padding:0 20px}
     .section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:16px}
@@ -1186,15 +1188,12 @@
       <a href="/kontakty.html" class="active">Контакти</a>
     </div>
     <a href="/kontakty.html" class="nav-cta">Замовити</a>
-    <button class="nav-burger" id="nav-burger" aria-label="Меню">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <button class="nav-burger" id="nav-burger" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="nav-burger-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg><svg class="nav-burger-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
 </nav>
 <div id="mobile-menu">
-  <button id="mobile-close" aria-label="Закрити">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
   <a href="/" class="mm-link">Головна</a>
   <a href="/poslugy.html" class="mm-link">Послуги</a>
   <a href="/galereya.html" class="mm-link">Галерея</a>
@@ -1403,11 +1402,10 @@ const navEl=document.getElementById('nav');
 if(navEl){window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',window.scrollY>40);});}
 const burger=document.getElementById('nav-burger');
 const mMenu=document.getElementById('mobile-menu');
-const mClose=document.getElementById('mobile-close');
-if(burger&&mMenu&&mClose){
-  burger.addEventListener('click',()=>mMenu.classList.add('open'));
-  mClose.addEventListener('click',()=>mMenu.classList.remove('open'));
-  mMenu.querySelectorAll('.mm-link').forEach(a=>a.addEventListener('click',()=>mMenu.classList.remove('open')));
+if(burger&&mMenu){
+  const syncBurger=()=>burger.setAttribute('aria-expanded',mMenu.classList.contains('open')?'true':'false');
+  burger.addEventListener('click',()=>{mMenu.classList.toggle('open');syncBurger();});
+  mMenu.querySelectorAll('.mm-link').forEach(a=>a.addEventListener('click',()=>{mMenu.classList.remove('open');syncBurger();}));
 }
 function animateCount(el,target,duration=2000){
   const start=performance.now();
