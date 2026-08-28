@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>МЕС — Пошук координат для карти</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    :root{--bg:#060a10;--bg2:#0b1118;--bg3:#0f1820;--gold:#e8a020;--cyan:#00c8e8;--white:#f0f4f8;--gray:#8090a0;--gray2:#2c3b4a}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--white);line-height:1.6}
+    .wrap{max-width:640px;margin:0 auto;padding:40px 20px 80px}
+    a{color:var(--cyan)}
+    h1{font-size:24px;margin:0 0 8px}
+    p.lead{color:var(--gray);font-size:14px;margin:0 0 28px}
+    .row{display:flex;gap:10px}
+    input[type=text]{flex:1;background:var(--bg3);border:1px solid var(--gray2);color:var(--white);padding:12px 14px;font-size:15px;border-radius:6px;outline:none}
+    input[type=text]:focus{border-color:var(--gold)}
+    button{background:var(--gold);color:var(--bg);border:none;padding:12px 20px;font-size:14px;font-weight:600;border-radius:6px;cursor:pointer}
+    button:hover{background:#f5c040}
+    button:disabled{opacity:.5;cursor:default}
+    .results{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+    .result{background:var(--bg3);border:1px solid var(--gray2);border-radius:8px;padding:14px 16px;cursor:pointer;transition:border-color .2s}
+    .result:hover{border-color:var(--gold)}
+    .result-name{font-size:14px;margin-bottom:4px}
+    .result-coords{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--gray)}
+    .copied{color:#4ade80;font-size:12px;margin-top:4px;display:none}
+    .status{color:var(--gray);font-size:13px;margin-top:16px}
+    .back{display:inline-block;margin-top:32px;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Пошук координат для карти об'єктів</h1>
+    <p class="lead">Введіть адресу (наприклад: <em>Соборна 27, Біла Церква</em>) і оберіть правильний варіант зі списку — координати скопіюються, вставте їх у поле «Координати» в адмінпанелі.</p>
+    <div class="row">
+      <input type="text" id="q" placeholder="Наприклад: вул. Соборна 27, Біла Церква" autocomplete="off" />
+      <button id="go">Шукати</button>
+    </div>
+    <div class="status" id="status"></div>
+    <div class="results" id="results"></div>
+    <a class="back" href="/admin/">&#8592; Повернутись в адмінпанель</a>
+  </div>
+  <script>
+    var input=document.getElementById('q');
+    var btn=document.getElementById('go');
+    var results=document.getElementById('results');
+    var status=document.getElementById('status');
+    async function search(){
+      var q=input.value.trim();
+      if(!q)return;
+      btn.disabled=true;
+      status.textContent='Шукаємо...';
+      results.innerHTML='';
+      try{
+        var url='https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=8&countrycodes=ua&accept-language=uk&q='+encodeURIComponent(q);
+        var res=await fetch(url,{headers:{'Accept':'application/json'}});
+        var data=await res.json();
+        if(!data.length){
+          status.textContent='Нічого не знайдено. Спробуйте вказати місто точніше.';
+          return;
+        }
+        status.textContent='Знайдено '+data.length+' варіант(ів) — оберіть потрібний:';
+        data.forEach(function(item){
+          var lat=parseFloat(item.lat).toFixed(6);
+          var lon=parseFloat(item.lon).toFixed(6);
+          var div=document.createElement('div');
+          div.className='result';
+          div.innerHTML='<div class="result-name">'+item.display_name+'</div>'
+            +'<div class="result-coords">'+lat+', '+lon+'</div>'
+            +'<div class="copied">Скопійовано! Вставте це значення в поле «Координати»</div>';
+          div.addEventListener('click', function(){
+            var text=lat+', '+lon;
+            var copiedEl=div.querySelector('.copied');
+            function shown(){copiedEl.style.display='block';setTimeout(function(){copiedEl.style.display='none';},4000);}
+            if(navigator.clipboard&&navigator.clipboard.writeText){
+              navigator.clipboard.writeText(text).then(shown).catch(function(){window.prompt('Скопіюйте координати вручну:',text);});
+            }else{
+              window.prompt('Скопіюйте координати вручну:',text);
+            }
+          });
+          results.appendChild(div);
+        });
+      }catch(e){
+        status.textContent='Помилка пошуку. Перевірте інтернет-з’єднання і спробуйте ще раз.';
+      }finally{
+        btn.disabled=false;
+      }
+    }
+    btn.addEventListener('click', search);
+    input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); search(); } });
+  </script>
+</body>
+</html>
