@@ -7,7 +7,8 @@ exports.handler = async (event) => {
 
   const out = { range: days, total: 0, days: [], pages: {}, refs: {} };
   try {
-    const { getStore } = await import("@netlify/blobs");
+    const { connectLambda, getStore } = await import("@netlify/blobs");
+    connectLambda(event);
     const store = getStore("analytics");
     const now = new Date();
     for (let i = days - 1; i >= 0; i--) {

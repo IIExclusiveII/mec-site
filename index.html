@@ -1325,15 +1325,15 @@
   <div class="container">
     <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-badge"><span class="hero-badge-dot"></span>Працюємо по всій Україні</div>
-      <h1 class="hero-title">Електро<br><span class="hero-title-line2">монтаж</span><br>нового рівня</h1>
-      <p class="hero-sub">ТОВ &#171;МОНТАЖЕНЕРГОСИСТЕМ&#187; &#8212; електромонтажні роботи по всій Україні: кабельні лінії 0,4&#8211;10 кВ, монтаж ТП/РП/КТП, електролабораторія, заземлення та блискавкозахист. З 2015 року.</p>
+      <div class="hero-badge"><span class="hero-badge-dot"></span><span data-home="badge">Працюємо по всій Україні</span></div>
+      <h1 class="hero-title"><span data-home="titleLine1">Електро</span><br><span class="hero-title-line2" data-home="titleLine2">монтаж</span><br><span data-home="titleLine3">нового рівня</span></h1>
+      <p class="hero-sub" data-home="subtitle">ТОВ &#171;МОНТАЖЕНЕРГОСИСТЕМ&#187; &#8212; електромонтажні роботи по всій Україні: кабельні лінії 0,4&#8211;10 кВ, монтаж ТП/РП/КТП, електролабораторія, заземлення та блискавкозахист. З 2015 року.</p>
       <div class="hero-actions">
         <a href="tel:+380985212269" target="_blank" class="btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.12z"/></svg>
-          Зв'язатися з нами
+          <span data-home="primaryBtn">Зв'язатися з нами</span>
         </a>
-        <a href="/poslugy.html" class="btn-outline">Наші послуги &#8594;</a>
+        <a href="/poslugy.html" class="btn-outline" data-home="secondaryBtn">Наші послуги &#8594;</a>
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
@@ -1407,7 +1407,7 @@
         </svg>
       </div>
     </div>
-      <div class="hero-stats">
+      <div class="hero-stats" data-home="stats">
         <div class="hero-stat"><div class="hero-stat-num" data-target="2015">2015</div><div class="hero-stat-label">Рік заснування</div></div>
         <div class="hero-stat"><div class="hero-stat-num" data-count="1000">0</div><div class="hero-stat-label">Реалізованих об'єктів</div></div>
         <div class="hero-stat"><div class="hero-stat-num">10 кВ</div><div class="hero-stat-label">Клас напруги</div></div>
@@ -1947,14 +1947,18 @@ function animateCount(el,target,duration=2000){
   };
   requestAnimationFrame(update);
 }
-const heroStat=document.querySelector('[data-count]');
-if(heroStat){
+function initHeroCount(){
+  const heroStat=document.querySelector('[data-count]');
+  if(!heroStat||heroStat.dataset.countWired)return;
+  heroStat.dataset.countWired='1';
   let counted=false;
   const statObs=new IntersectionObserver(entries=>{
     if(entries[0].isIntersecting&&!counted){counted=true;animateCount(heroStat,parseInt(heroStat.dataset.count),2000);}
   },{threshold:.5});
   statObs.observe(heroStat);
 }
+// Safety net: wire the counter even if home.json never resolves.
+setTimeout(initHeroCount,2500);
 function wireReveals(scope){
   const root=scope||document;
   const reveals=root.querySelectorAll('.reveal:not(.reveal-wired)');
@@ -2109,6 +2113,37 @@ async function loadContacts(){
   });
 }
 loadContacts();
+// ─── Hero (headline / subtitle / buttons / stats) — editable in /admin ───
+async function loadHome(){
+  let h=null;
+  try{
+    const res=await fetch('/content/home.json',{cache:'no-store'});
+    if(res.ok)h=await res.json();
+  }catch(e){}
+  if(h){
+    const setText=(sel,val)=>{ if(val==null||val==='')return; document.querySelectorAll('[data-home="'+sel+'"]').forEach(el=>{el.textContent=val;}); };
+    ['badge','titleLine1','titleLine2','titleLine3','subtitle','primaryBtn','secondaryBtn'].forEach(k=>setText(k,h[k]));
+    if(Array.isArray(h.stats)){
+      const cells=document.querySelectorAll('[data-home="stats"] .hero-stat');
+      h.stats.forEach((s,i)=>{
+        const cell=cells[i]; if(!cell||!s)return;
+        const numEl=cell.querySelector('.hero-stat-num'), labEl=cell.querySelector('.hero-stat-label');
+        if(labEl&&s.label)labEl.textContent=s.label;
+        if(numEl&&s.num){
+          const m=String(s.num).match(/^\s*(\d+)\s*(\+?)\s*$/);
+          if(numEl.hasAttribute('data-count')){
+            if(m){numEl.setAttribute('data-count',m[1]);numEl.textContent='0';}
+            else{numEl.removeAttribute('data-count');numEl.textContent=s.num;}
+          }else{
+            numEl.textContent=s.num;
+          }
+        }
+      });
+    }
+  }
+  initHeroCount();
+}
+loadHome();
 // ─── Works map: pins of completed projects, editable via /admin at
 // /content/map.json. Only runs on pages that load Leaflet AND have a
 // #works-map element (currently just pro-nas.html) — inert everywhere else.

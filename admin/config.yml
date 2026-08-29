@@ -12,6 +12,31 @@ public_folder: "/images/gallery"
 locale: "uk"
 
 collections:
+  - name: "home"
+    label: "Головна сторінка"
+    files:
+      - name: "hero"
+        label: "Головний екран (перший блок)"
+        file: "content/home.json"
+        description: "Великий заголовок, текст, кнопки та цифри у самому верху головної сторінки."
+        fields:
+          - {label: "Значок над заголовком", name: "badge", widget: "string", hint: "напр. Працюємо по всій Україні"}
+          - {label: "Заголовок — рядок 1", name: "titleLine1", widget: "string"}
+          - {label: "Заголовок — рядок 2 (кольоровий)", name: "titleLine2", widget: "string"}
+          - {label: "Заголовок — рядок 3", name: "titleLine3", widget: "string"}
+          - {label: "Опис під заголовком", name: "subtitle", widget: "text"}
+          - {label: "Напис на головній кнопці", name: "primaryBtn", widget: "string", hint: "веде на телефон із розділу «Контакти»"}
+          - {label: "Напис на другій кнопці", name: "secondaryBtn", widget: "string", hint: "веде на сторінку «Послуги»"}
+          - label: "Цифри (4 штуки)"
+            name: "stats"
+            widget: "list"
+            max: 4
+            min: 4
+            summary: "{{num}} — {{label}}"
+            fields:
+              - {label: "Число", name: "num", widget: "string", hint: "напр. 2015, 1000+, 10 кВ, 100%"}
+              - {label: "Підпис", name: "label", widget: "string"}
+
   - name: "social"
     label: "Соцмережі"
     files:

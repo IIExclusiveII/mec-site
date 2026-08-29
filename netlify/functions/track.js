@@ -37,7 +37,8 @@ exports.handler = async (event) => {
   const day = new Date().toISOString().slice(0, 10);
 
   try {
-    const { getStore } = await import("@netlify/blobs");
+    const { connectLambda, getStore } = await import("@netlify/blobs");
+    connectLambda(event);
     const store = getStore("analytics");
     const key = "day/" + day;
     const cur = (await store.get(key, { type: "json" })) || { total: 0, pages: {}, refs: {} };
