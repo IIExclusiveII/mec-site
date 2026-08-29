@@ -1,22 +1,23 @@
 // Privacy-friendly page-view counter. No cookies, no IPs, no per-visitor
 // tracking — just aggregated daily counts kept in Netlify Blobs.
+// Referrers are stored as short ASCII tokens; the dashboard localises them.
 const H = { "Access-Control-Allow-Origin": "*", "Cache-Control": "no-store" };
 
-function refBucket(r, host) {
-  if (!r) return "Прямі заходи";
+function refToken(r, host) {
+  if (!r) return "direct";
   try {
     const h = new URL(r).hostname.replace(/^www\./, "");
-    if (h === String(host || "").replace(/^www\./, "")) return "Прямі заходи";
-    if (/(^|\.)google\./.test(h)) return "Google";
-    if (/(^|\.)bing\./.test(h)) return "Bing";
-    if (/duckduckgo/.test(h)) return "DuckDuckGo";
-    if (/facebook|fb\.com|fb\.me/.test(h)) return "Facebook";
-    if (/instagram/.test(h)) return "Instagram";
-    if (/t\.me|telegram/.test(h)) return "Telegram";
-    if (/olx\./.test(h)) return "OLX";
-    return h;
+    if (h === String(host || "").replace(/^www\./, "")) return "direct";
+    if (/(^|\.)google\./.test(h)) return "google";
+    if (/(^|\.)bing\./.test(h)) return "bing";
+    if (/duckduckgo/.test(h)) return "duckduckgo";
+    if (/facebook|fb\.com|fb\.me/.test(h)) return "facebook";
+    if (/instagram/.test(h)) return "instagram";
+    if (/t\.me|telegram/.test(h)) return "telegram";
+    if (/olx\./.test(h)) return "olx";
+    return h.slice(0, 60);
   } catch (e) {
-    return "Інше";
+    return "other";
   }
 }
 
@@ -28,12 +29,16 @@ exports.handler = async (event) => {
     return { statusCode: 204, headers: H, body: "" };
   }
 
+  let raw = event.body || "{}";
+  if (event.isBase64Encoded) {
+    try { raw = Buffer.from(raw, "base64").toString("utf8"); } catch (e) {}
+  }
   let body = {};
-  try { body = JSON.parse(event.body || "{}"); } catch (e) {}
+  try { body = JSON.parse(raw); } catch (e) {}
 
   let path = String(body.p || "/").split("?")[0].split("#")[0].slice(0, 120) || "/";
   if (!path.startsWith("/")) path = "/" + path;
-  const ref = refBucket(body.r, event.headers.host);
+  const ref = refToken(body.r, event.headers.host);
   const day = new Date().toISOString().slice(0, 10);
 
   try {

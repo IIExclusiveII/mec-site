@@ -56,6 +56,11 @@
     var days = 30;
 
     function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+    var REF_LABELS = {
+      direct: 'Прямі заходи', google: 'Google', bing: 'Bing', duckduckgo: 'DuckDuckGo',
+      facebook: 'Facebook', instagram: 'Instagram', telegram: 'Telegram', olx: 'OLX', other: 'Інше'
+    };
+    function refLabel(k){ return REF_LABELS[k] || k; }
 
     async function load() {
       content.innerHTML = '<div class="status">Завантаження…</div>';
@@ -82,7 +87,7 @@
         return '<tr><td>' + esc(p[0]) + '</td><td class="num">' + p[1] + '</td></tr>';
       }).join('') || '<tr><td colspan="2" style="color:var(--gray)">—</td></tr>';
       var refRows = (data.topRefs || []).map(function (r) {
-        return '<tr><td>' + esc(r[0]) + '</td><td class="num">' + r[1] + '</td></tr>';
+        return '<tr><td>' + esc(refLabel(r[0])) + '</td><td class="num">' + r[1] + '</td></tr>';
       }).join('') || '<tr><td colspan="2" style="color:var(--gray)">—</td></tr>';
 
       content.innerHTML =

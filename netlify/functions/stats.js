@@ -19,7 +19,10 @@ exports.handler = async (event) => {
       out.days.push({ date: key, total: rec.total || 0 });
       out.total += rec.total || 0;
       for (const [k, v] of Object.entries(rec.pages || {})) out.pages[k] = (out.pages[k] || 0) + v;
-      for (const [k, v] of Object.entries(rec.refs || {})) out.refs[k] = (out.refs[k] || 0) + v;
+      for (const [k, v] of Object.entries(rec.refs || {})) {
+        if (/[Ѐ-ӿ]/.test(k) && !/^[a-z]/.test(k)) continue; // drop legacy mis-encoded keys
+        out.refs[k] = (out.refs[k] || 0) + v;
+      }
     }
   } catch (e) {
     return { statusCode: 200, headers: H, body: JSON.stringify({ ...out, error: String((e && e.message) || e) }) };
