@@ -1593,22 +1593,50 @@ function parseLatLng(raw){
   if(lat!==null&&lng!==null&&Math.abs(lat)<=90&&Math.abs(lng)<=180)return [lat,lng];
   return null;
 }
-function isShortMapsLink(s){return /^https:\/\/maps\.app\.goo\.gl\//.test(String(s||'').trim());}
-// Short Google Maps share links (from the "Share" button) can't be followed
-// from the browser — a Netlify Function resolves them server-side instead.
-async function resolveShortLink(url){
+// Pull a Google Maps URL out of a value even if it's wrapped in shared text
+// (phones often share «Назва місця  https://maps.app.goo.gl/…»).
+function extractMapsLink(s){
+  const m=String(s||'').match(/https?:\/\/(?:maps\.app\.goo\.gl|goo\.gl\/maps|(?:www\.)?google\.[a-z.]+\/maps|maps\.google\.[a-z.]+)\/\S+/i);
+  return m?m[0].replace(/[).,'"»]+$/,''):null;
+}
+function looksLikeAddress(s){
+  s=String(s||'').trim();
+  return s.length>4 && !/^https?:\/\//i.test(s) && /[a-zA-Zа-яА-ЯіїєґІЇЄҐ]/.test(s);
+}
+// Ask our Netlify Function to resolve a share link OR geocode an address
+// (browsers can't follow Google's short-link redirects cross-origin).
+async function resolveViaFunction(params){
   try{
-    const res=await fetch('/.netlify/functions/resolve-shortlink?url='+encodeURIComponent(url),{cache:'no-store'});
+    const res=await fetch('/.netlify/functions/resolve-shortlink?'+params,{cache:'no-store'});
     if(!res.ok)return null;
     const data=await res.json();
     if(typeof data.lat==='number'&&typeof data.lng==='number')return [data.lat,data.lng];
   }catch(e){}
   return null;
 }
+// Cache geocoded addresses in the browser so repeat visits don't re-query.
+function geoCacheGet(k){try{const o=JSON.parse(localStorage.getItem('mes_geocache')||'{}');const e=o[k];if(e&&Date.now()-e.t<2592000000)return[e.lat,e.lng];}catch(e){}return null;}
+function geoCacheSet(k,c){try{const o=JSON.parse(localStorage.getItem('mes_geocache')||'{}');o[k]={lat:c[0],lng:c[1],t:Date.now()};localStorage.setItem('mes_geocache',JSON.stringify(o));}catch(e){}}
+async function geocodeAddress(addr){
+  const key=addr.trim().toLowerCase();
+  const cached=geoCacheGet(key);
+  if(cached)return cached;
+  const coords=await resolveViaFunction('address='+encodeURIComponent(addr.trim()));
+  if(coords)geoCacheSet(key,coords);
+  return coords;
+}
 async function resolveItemCoords(it){
-  const direct=parseLatLng(it.location);
+  const loc=it.location;
+  const direct=parseLatLng(loc);
   if(direct)return direct;
-  if(isShortMapsLink(it.location))return resolveShortLink(it.location.trim());
+  const link=extractMapsLink(loc);
+  if(link){
+    const inUrl=parseLatLng(link);
+    if(inUrl)return inUrl;
+    return resolveViaFunction('url='+encodeURIComponent(link));
+  }
+  if(looksLikeAddress(loc))return geocodeAddress(loc);
+  if(it.address&&looksLikeAddress(it.address))return geocodeAddress(it.address);
   return null;
 }
 async function loadWorksMap(){
@@ -1624,27 +1652,34 @@ async function loadWorksMap(){
     const res=await fetch('/content/map.json',{cache:'no-store'});
     if(res.ok)items=unwrapItems(await res.json());
   }catch(e){}
-  const resolved=await Promise.all(items.map(it=>resolveItemCoords(it).then(coords=>({it,coords}))));
-  const bounds=[];
-  resolved.forEach(({it,coords})=>{
-    if(!coords)return;
+  function addMarker(it,coords){
     bounds.push(coords);
     const marker=L.marker(coords).addTo(map);
     const hasContent=(it.description&&it.description.trim())||(Array.isArray(it.photos)&&it.photos.length);
-    if(!hasContent)return;
-    let html='';
-    if(it.address)html+='<div class="works-popup-title">'+escapeHtml(it.address)+'</div>';
-    if(it.description)html+='<div class="works-popup-desc">'+escapeHtml(it.description)+'</div>';
-    if(Array.isArray(it.photos)&&it.photos.length){
-      html+='<div class="works-popup-photos">'+it.photos.map(p=>{
-        const src=typeof p==='string'?p:(p&&p.image)||'';
-        return src?'<img src="'+src+'" alt="" loading="lazy" />':'';
-      }).join('')+'</div>';
+    if(hasContent){
+      let html='';
+      if(it.address)html+='<div class="works-popup-title">'+escapeHtml(it.address)+'</div>';
+      if(it.description)html+='<div class="works-popup-desc">'+escapeHtml(it.description)+'</div>';
+      if(Array.isArray(it.photos)&&it.photos.length){
+        html+='<div class="works-popup-photos">'+it.photos.map(p=>{
+          const src=typeof p==='string'?p:(p&&p.image)||'';
+          return src?'<img src="'+src+'" alt="" loading="lazy" />':'';
+        }).join('')+'</div>';
+      }
+      marker.bindPopup(html);
     }
-    marker.bindPopup(html);
-  });
-  if(bounds.length>1)map.fitBounds(bounds,{padding:[30,30],maxZoom:13});
-  else if(bounds.length===1)map.setView(bounds[0],13);
+    if(bounds.length>1)map.fitBounds(bounds,{padding:[30,30],maxZoom:13});
+    else map.setView(coords,13);
+  }
+  // Resolve one at a time and drop each pin as it's found — shortlink/geocode
+  // lookups go through OSM Nominatim, which asks for ≤ ~1 request/second.
+  const bounds=[];
+  for(const it of items){
+    const coords=await resolveItemCoords(it);
+    if(coords)addMarker(it,coords);
+    else console.warn('[works-map] не вдалося визначити координати для позначки:',it.location);
+    await new Promise(r=>setTimeout(r,300));
+  }
 }
 loadWorksMap();
 // ─── Gallery: photos are loaded from /content/gallery.json so the owner can
