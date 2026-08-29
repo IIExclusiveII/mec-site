@@ -38,7 +38,7 @@ exports.handler = async (event) => {
 
   try {
     const { getStore } = await import("@netlify/blobs");
-    const store = getStore({ name: "analytics", consistency: "strong" });
+    const store = getStore("analytics");
     const key = "day/" + day;
     const cur = (await store.get(key, { type: "json" })) || { total: 0, pages: {}, refs: {} };
     cur.total = (cur.total || 0) + 1;
