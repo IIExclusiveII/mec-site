@@ -1,0 +1,10 @@
+{
+  "pages": {
+    "home": { "title": "", "description": "", "ogImage": "" },
+    "poslugy": { "title": "", "description": "", "ogImage": "" },
+    "pro_nas": { "title": "", "description": "", "ogImage": "" },
+    "galereya": { "title": "", "description": "", "ogImage": "" },
+    "kontakty": { "title": "", "description": "", "ogImage": "" },
+    "faq": { "title": "", "description": "", "ogImage": "" }
+  }
+}

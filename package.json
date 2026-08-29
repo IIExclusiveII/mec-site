@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "description": "МЕС — Монтаженергосистем: сайт + Netlify Functions",
+  "scripts": {
+    "build": "node build.js"
+  },
   "dependencies": {
-    "@netlify/blobs": "^8.1.0"
+    "@netlify/blobs": "^8.1.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.11"
   }
 }

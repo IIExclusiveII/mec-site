@@ -12,6 +12,89 @@ public_folder: "/images/gallery"
 locale: "uk"
 
 collections:
+  - name: "blog"
+    label: "Блог / Статті"
+    label_singular: "Стаття"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    media_folder: "/images/blog"
+    public_folder: "/images/blog"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    description: "Статті стають окремими сторінками на /blog.html. Після збереження Netlify перебудує сайт (1–2 хв)."
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Дата", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, default: ""}
+      - {label: "Короткий опис", name: "description", widget: "text", hint: "1–2 речення. Показується під заголовком у Google і на картці статті."}
+      - {label: "Обкладинка", name: "cover", widget: "image", required: false, hint: "Горизонтальне зображення. Необов'язкове."}
+      - {label: "Чернетка (не показувати на сайті)", name: "draft", widget: "boolean", default: false, required: false}
+      - {label: "Текст статті", name: "body", widget: "markdown"}
+
+  - name: "seo"
+    label: "SEO сторінок"
+    files:
+      - name: "seo"
+        label: "Заголовки та описи для Google"
+        file: "content/seo.json"
+        description: "Заповнюйте лише те, що хочете змінити. Порожнє поле = залишається як зараз. Застосовується при збірці сайту."
+        fields:
+          - label: "Сторінки"
+            name: "pages"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Головна"
+                name: "home"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - {label: "Title (вкладка + Google)", name: "title", widget: "string", required: false}
+                  - {label: "Опис (Google)", name: "description", widget: "text", required: false}
+                  - {label: "Картинка для месенджерів", name: "ogImage", widget: "image", required: false}
+              - label: "Послуги"
+                name: "poslugy"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - {label: "Title", name: "title", widget: "string", required: false}
+                  - {label: "Опис", name: "description", widget: "text", required: false}
+                  - {label: "Картинка", name: "ogImage", widget: "image", required: false}
+              - label: "Про нас"
+                name: "pro_nas"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - {label: "Title", name: "title", widget: "string", required: false}
+                  - {label: "Опис", name: "description", widget: "text", required: false}
+                  - {label: "Картинка", name: "ogImage", widget: "image", required: false}
+              - label: "Галерея"
+                name: "galereya"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - {label: "Title", name: "title", widget: "string", required: false}
+                  - {label: "Опис", name: "description", widget: "text", required: false}
+                  - {label: "Картинка", name: "ogImage", widget: "image", required: false}
+              - label: "Контакти"
+                name: "kontakty"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - {label: "Title", name: "title", widget: "string", required: false}
+                  - {label: "Опис", name: "description", widget: "text", required: false}
+                  - {label: "Картинка", name: "ogImage", widget: "image", required: false}
+              - label: "FAQ"
+                name: "faq"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - {label: "Title", name: "title", widget: "string", required: false}
+                  - {label: "Опис", name: "description", widget: "text", required: false}
+                  - {label: "Картинка", name: "ogImage", widget: "image", required: false}
+
   - name: "home"
     label: "Головна сторінка"
     files:
@@ -65,7 +148,7 @@ collections:
             widget: "list"
             summary: "{{title}}"
             fields:
-              - {label: "Фото", name: "src", widget: "image", hint: "Завантажте фото виконаної роботи (JPG/PNG, бажано горизонтальне, до 2-3 МБ)."}
+              - {label: "Фото", name: "src", widget: "image", hint: "Фото виконаної роботи (JPG/PNG, бажано горизонтальне). Можна прямо з телефона — на сайті воно автоматично стискається."}
               - {label: "Заголовок", name: "title", widget: "string", hint: "Наприклад: Монтаж КТП"}
               - {label: "Короткий опис", name: "desc", widget: "string", hint: "Одне речення, наприклад: Комплектна трансформаторна підстанція"}
               - {label: "Alt-текст для Google", name: "alt", widget: "string", hint: "Опис фото для пошукових систем, наприклад: Монтаж трансформаторної підстанції КТП у Києві"}

@@ -66,4 +66,42 @@
   } else {
     loadSocial();
   }
+
+  /* ── Serve uploaded photos through Netlify Image CDN ────────────────── */
+  /* Resizes + recompresses on the fly, so an 8 MB phone photo still loads
+     fast. Only touches local /images/... sources. */
+  function cdn(src, w) {
+    if (!/^\/images\//.test(src) || /\/\.netlify\/images/.test(src)) return src;
+    return "/.netlify/images?url=" + encodeURIComponent(src) + "&w=" + w + "&q=72";
+  }
+  function widthFor(img) {
+    if (img.closest(".works-popup-photos")) return 240;
+    if (img.closest(".gallery-item, .blog-card")) return 900;
+    if (img.closest(".post-cover, .post-body")) return 1400;
+    return 1400;
+  }
+  function upgradeImages(root) {
+    var imgs = (root || document).querySelectorAll('img[src^="/images/"]:not([data-cdn])');
+    for (var i = 0; i < imgs.length; i++) {
+      var img = imgs[i];
+      img.setAttribute("data-cdn", "1");
+      var raw = img.getAttribute("src");
+      img.setAttribute("src", cdn(raw, widthFor(img)));
+    }
+  }
+  function startImageUpgrade() {
+    upgradeImages(document);
+    try {
+      var t;
+      new MutationObserver(function () {
+        clearTimeout(t);
+        t = setTimeout(function () { upgradeImages(document); }, 120);
+      }).observe(document.body, { childList: true, subtree: true });
+    } catch (e) {}
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startImageUpgrade);
+  } else {
+    startImageUpgrade();
+  }
 })();
