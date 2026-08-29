@@ -4,11 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>МЕС — Адмінпанель (фото робіт)</title>
+  <title>МЕС — Адмінпанель</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </head>
 <body>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    (function () {
+      if (!window.CMS || !CMS.registerAdditionalLink) return;
+      var base = window.location.origin;
+      CMS.registerAdditionalLink({
+        id: "find-coordinates",
+        title: "Помічник: координати для карти",
+        data: base + "/admin/find-coordinates.html",
+        options: { iconName: "location" },
+      });
+      CMS.registerAdditionalLink({
+        id: "telegram",
+        title: "Сповіщення про заявки (Telegram)",
+        data: base + "/admin/telegram.html",
+        options: { iconName: "settings" },
+      });
+      CMS.registerAdditionalLink({
+        id: "stats",
+        title: "Статистика відвідувань",
+        data: base + "/admin/stats.html",
+        options: { iconName: "page" },
+      });
+      CMS.registerAdditionalLink({
+        id: "view-site",
+        title: "Відкрити сайт ↗",
+        data: base + "/",
+        options: { iconName: "page" },
+      });
+    })();
+  </script>
 </body>
 </html>

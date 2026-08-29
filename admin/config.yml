@@ -2,12 +2,31 @@ backend:
   name: git-gateway
   branch: main
 
+site_url: "https://mecua.netlify.app"
+display_url: "https://mecua.netlify.app"
+logo_url: "https://mecua.netlify.app/favicon.svg"
+
 media_folder: "images/gallery"
 public_folder: "/images/gallery"
 
 locale: "uk"
 
 collections:
+  - name: "social"
+    label: "Соцмережі"
+    files:
+      - name: "social"
+        label: "Посилання на соцмережі"
+        file: "content/social.json"
+        description: "Іконки з'являються у футері на всіх сторінках. Порожнє поле = іконки немає. Можна вставляти повне посилання або без https://."
+        fields:
+          - {label: "Instagram", name: "instagram", widget: "string", required: false, hint: "напр. instagram.com/mec_kyiv"}
+          - {label: "Facebook", name: "facebook", widget: "string", required: false}
+          - {label: "Telegram (канал або чат)", name: "telegram", widget: "string", required: false, hint: "напр. t.me/mec_kyiv"}
+          - {label: "Viber (посилання-запрошення)", name: "viber", widget: "string", required: false}
+          - {label: "YouTube", name: "youtube", widget: "string", required: false}
+          - {label: "TikTok", name: "tiktok", widget: "string", required: false}
+
   - name: "gallery"
     label: "Галерея робіт"
     files:
