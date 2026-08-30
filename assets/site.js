@@ -33,7 +33,12 @@
     st.textContent =
       ".footer-social{display:flex;gap:14px;align-items:center;flex-wrap:wrap}" +
       ".footer-social a{color:var(--gray,#8090a0);display:inline-flex;transition:color .2s,transform .2s}" +
-      ".footer-social a:hover{color:var(--gold,#e8a020);transform:translateY(-2px)}";
+      ".footer-social a:hover{color:var(--gold,#e8a020);transform:translateY(-2px)}" +
+      ".rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:24px}" +
+      ".rel-card{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border:1px solid var(--gray2,#3a4a5a);border-radius:var(--radius-lg,12px);background:var(--bg2,#0b1118);text-decoration:none;transition:border-color .2s,transform .2s}" +
+      ".rel-card:hover{border-color:var(--gold,#e8a020);transform:translateY(-3px)}" +
+      ".rel-card b{font-family:var(--font-display,sans-serif);font-size:16px;color:var(--white,#f0f4f8);line-height:1.3}" +
+      ".rel-card span{font-size:13px;color:var(--gray,#8090a0);line-height:1.6}";
     document.head.appendChild(st);
   }
   function loadSocial() {
@@ -90,6 +95,7 @@
     }
   }
   function startImageUpgrade() {
+    injectSocialCSS();
     upgradeImages(document);
     try {
       var t;

@@ -79,5 +79,7 @@
     <priority>0.7</priority>
   </url>
   <url><loc>https://mecua.netlify.app/blog</loc><lastmod>2026-08-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mecua.netlify.app/blog/2026-08-30-montazh-ktp-etapy</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mecua.netlify.app/blog/2026-08-30-protokoly-elektrolaboratorii</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://mecua.netlify.app/blog/2026-08-29-yak-obraty-pereriz-kabelyu</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

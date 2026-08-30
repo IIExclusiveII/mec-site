@@ -110,7 +110,13 @@ function loadPosts() {
     .readdirSync(BLOG_DIR)
     .filter((f) => f.endsWith(".md"))
     .map((f) => {
-      const parsed = matter(read(path.join(BLOG_DIR, f)));
+      let parsed;
+      try {
+        parsed = matter(read(path.join(BLOG_DIR, f)));
+      } catch (e) {
+        console.warn(`build.js: skipping ${f} — bad frontmatter (${e.reason || e.message})`);
+        return null;
+      }
       const slug = f.replace(/\.md$/, "");
       return {
         slug,
@@ -124,7 +130,7 @@ function loadPosts() {
         bodyMd: parsed.content || parsed.data.body || "",
       };
     })
-    .filter((p) => !p.draft)
+    .filter((p) => p && !p.draft)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
