@@ -266,6 +266,57 @@ function applySeo() {
   return n;
 }
 
+/* ---------- enrich JSON-LD with socials / logo / geo ---------- */
+const LOCAL_PAGES = [
+  "index.html", "poslugy.html", "pro-nas.html", "galereya.html", "kontakty.html",
+  "faq-elektromontazh-kyiv.html", "elektromontazh-kyiv.html", "elektrolaboratoriya-kyiv.html",
+  "kabelni-linii-kyiv.html", "montazh-tp-ktp-kyiv.html", "zazemlennya-bliskavkozahyst-kyiv.html",
+  "avariynyy-remont-elektryky-kyiv.html", "kyivska-oblast.html",
+];
+function enhanceSchema() {
+  let social = {};
+  try { social = JSON.parse(read(path.join(ROOT, "content", "social.json"))); } catch (e) {}
+  const sameAs = ["instagram", "facebook", "telegram", "viber", "youtube", "tiktok"]
+    .map((k) => (social[k] || "").trim())
+    .filter(Boolean)
+    .map((u) => (/^https?:/.test(u) ? u : "https://" + u));
+  const LOGO = SITE + "/icon-512.png";
+  const GEO = { "@type": "GeoCoordinates", latitude: 50.4014, longitude: 30.3288 };
+  const LOCALITY = { "@type": "PostalAddress", addressLocality: "Софіївська Борщагівка", addressRegion: "Київська область", addressCountry: "UA" };
+
+  let n = 0;
+  for (const file of LOCAL_PAGES) {
+    const fp = path.join(ROOT, file);
+    if (!exists(fp)) continue;
+    let html = read(fp);
+    const m = html.match(/(<script type="application\/ld\+json">\s*)([\s\S]*?)(\s*<\/script>)/);
+    if (!m) continue;
+    let data;
+    try { data = JSON.parse(m[2]); } catch (e) { continue; }
+    const nodes = Array.isArray(data["@graph"]) ? data["@graph"] : [data];
+    let touched = false;
+    for (const node of nodes) {
+      const types = [].concat(node["@type"] || []);
+      const isOrg = types.includes("Organization");
+      const isLB = types.includes("LocalBusiness") || types.includes("Electrician");
+      if (isOrg || isLB) {
+        if (sameAs.length && !node.sameAs) { node.sameAs = sameAs; touched = true; }
+        if (!node.logo) { node.logo = LOGO; touched = true; }
+        if (!node.image) { node.image = LOGO; touched = true; }
+      }
+      if (isLB) {
+        if (!node.geo) { node.geo = GEO; touched = true; }
+        if (!node.address || !node.address.addressLocality) { node.address = LOCALITY; touched = true; }
+      }
+    }
+    if (!touched) continue;
+    const json = JSON.stringify(data, null, 2).replace(/\n/g, "\n  ");
+    const next = html.slice(0, m.index) + m[1] + json + m[3] + html.slice(m.index + m[0].length);
+    if (next !== html) { fs.writeFileSync(fp, next); n++; }
+  }
+  return n;
+}
+
 /* ---------- sitemap ---------- */
 function updateSitemap(posts) {
   const sp = path.join(ROOT, "sitemap.xml");
@@ -288,5 +339,6 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 for (const p of posts) fs.writeFileSync(path.join(OUT_DIR, `${p.slug}.html`), renderPost(p));
 fs.writeFileSync(path.join(ROOT, "blog.html"), renderIndex(posts));
 const seoN = applySeo();
+const schemaN = enhanceSchema();
 updateSitemap(posts);
-console.log(`build.js: ${posts.length} blog post(s), blog.html, ${seoN} page(s) SEO-patched, sitemap updated`);
+console.log(`build.js: ${posts.length} blog post(s), blog.html, ${seoN} page(s) SEO-patched, ${schemaN} page(s) schema-enriched, sitemap updated`);

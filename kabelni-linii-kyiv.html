@@ -1140,28 +1140,83 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {"@type":"ListItem","position":1,"name":"Головна","item":"https://mecua.netlify.app/"},
-          {"@type":"ListItem","position":2,"name":"Кабельні лінії Київ","item":"https://mecua.netlify.app/kabelni-linii-kyiv"}
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Головна",
+            "item": "https://mecua.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Кабельні лінії Київ",
+            "item": "https://mecua.netlify.app/kabelni-linii-kyiv"
+          }
         ]
       },
       {
         "@type": "Service",
         "name": "Прокладка та ремонт кабельних ліній Київ",
         "alternateName": "Прокладка и ремонт кабельных линий Киев",
-        "provider": { "@id": "https://mecua.netlify.app/#organization" },
-        "areaServed": ["Київ", "Київська область"],
-        "availableLanguage": ["uk", "ru"],
-        "serviceType": ["прокладка кабельних ліній Київ", "ремонт кабельних ліній Київ", "пошук пошкодження кабелю Київ", "кабельні лінії 10кВ Київ"],
+        "provider": {
+          "@id": "https://mecua.netlify.app/#organization"
+        },
+        "areaServed": [
+          "Київ",
+          "Київська область"
+        ],
+        "availableLanguage": [
+          "uk",
+          "ru"
+        ],
+        "serviceType": [
+          "прокладка кабельних ліній Київ",
+          "ремонт кабельних ліній Київ",
+          "пошук пошкодження кабелю Київ",
+          "кабельні лінії 10кВ Київ"
+        ],
         "url": "https://mecua.netlify.app/kabelni-linii-kyiv"
       },
       {
-        "@type": ["LocalBusiness","Electrician"],
+        "@type": [
+          "LocalBusiness",
+          "Electrician"
+        ],
         "@id": "https://mecua.netlify.app/#business",
         "name": "МЕС — електромонтажні роботи Київ та Київська область",
         "url": "https://mecua.netlify.app",
         "telephone": "+380985212269",
         "email": "mec.lls@ukr.net",
-        "areaServed": [{"@type":"City","name":"Київ"},{"@type":"AdministrativeArea","name":"Київська область"},{"@type":"Country","name":"Україна"}]
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Київ"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Київська область"
+          },
+          {
+            "@type": "Country",
+            "name": "Україна"
+          }
+        ],
+        "sameAs": [
+          "https://www.tiktok.com/@mec.in.ua"
+        ],
+        "logo": "https://mecua.netlify.app/icon-512.png",
+        "image": "https://mecua.netlify.app/icon-512.png",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 50.4014,
+          "longitude": 30.3288
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Софіївська Борщагівка",
+          "addressRegion": "Київська область",
+          "addressCountry": "UA"
+        }
       }
     ]
   }

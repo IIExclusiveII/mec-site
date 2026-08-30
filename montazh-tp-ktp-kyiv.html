@@ -1140,27 +1140,82 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {"@type":"ListItem","position":1,"name":"Головна","item":"https://mecua.netlify.app/"},
-          {"@type":"ListItem","position":2,"name":"Монтаж ТП/КТП Київ","item":"https://mecua.netlify.app/montazh-tp-ktp-kyiv"}
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Головна",
+            "item": "https://mecua.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Монтаж ТП/КТП Київ",
+            "item": "https://mecua.netlify.app/montazh-tp-ktp-kyiv"
+          }
         ]
       },
       {
         "@type": "Service",
         "name": "Монтаж ТП, РП, КТП Київ та Київська область",
-        "provider": { "@id": "https://mecua.netlify.app/#organization" },
-        "areaServed": ["Київ", "Київська область"],
-        "availableLanguage": ["uk", "ru"],
-        "serviceType": ["монтаж ТП Київ", "монтаж КТП Київ", "обслуговування ТП Київ", "монтаж РП Київ"],
+        "provider": {
+          "@id": "https://mecua.netlify.app/#organization"
+        },
+        "areaServed": [
+          "Київ",
+          "Київська область"
+        ],
+        "availableLanguage": [
+          "uk",
+          "ru"
+        ],
+        "serviceType": [
+          "монтаж ТП Київ",
+          "монтаж КТП Київ",
+          "обслуговування ТП Київ",
+          "монтаж РП Київ"
+        ],
         "url": "https://mecua.netlify.app/montazh-tp-ktp-kyiv"
       },
       {
-        "@type": ["LocalBusiness","Electrician"],
+        "@type": [
+          "LocalBusiness",
+          "Electrician"
+        ],
         "@id": "https://mecua.netlify.app/#business",
         "name": "МЕС — електромонтажні роботи Київ та Київська область",
         "url": "https://mecua.netlify.app",
         "telephone": "+380985212269",
         "email": "mec.lls@ukr.net",
-        "areaServed": [{"@type":"City","name":"Київ"},{"@type":"AdministrativeArea","name":"Київська область"},{"@type":"Country","name":"Україна"}]
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Київ"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Київська область"
+          },
+          {
+            "@type": "Country",
+            "name": "Україна"
+          }
+        ],
+        "sameAs": [
+          "https://www.tiktok.com/@mec.in.ua"
+        ],
+        "logo": "https://mecua.netlify.app/icon-512.png",
+        "image": "https://mecua.netlify.app/icon-512.png",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 50.4014,
+          "longitude": 30.3288
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Софіївська Борщагівка",
+          "addressRegion": "Київська область",
+          "addressCountry": "UA"
+        }
       }
     ]
   }

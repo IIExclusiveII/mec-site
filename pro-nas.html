@@ -1140,8 +1140,18 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {"@type":"ListItem","position":1,"name":"Головна","item":"https://mecua.netlify.app/"},
-          {"@type":"ListItem","position":2,"name":"Про нас","item":"https://mecua.netlify.app/pro-nas"}
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Головна",
+            "item": "https://mecua.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Про нас",
+            "item": "https://mecua.netlify.app/pro-nas"
+          }
         ]
       },
       {
@@ -1149,18 +1159,54 @@
         "@id": "https://mecua.netlify.app/pro-nas#webpage",
         "url": "https://mecua.netlify.app/pro-nas",
         "name": "Про компанію ТОВ «МОНТАЖЕНЕРГОСИСТЕМ»",
-        "isPartOf": { "@id": "https://mecua.netlify.app/#website" },
-        "about": { "@id": "https://mecua.netlify.app/#business" },
+        "isPartOf": {
+          "@id": "https://mecua.netlify.app/#website"
+        },
+        "about": {
+          "@id": "https://mecua.netlify.app/#business"
+        },
         "inLanguage": "uk-UA"
       },
       {
-        "@type": ["LocalBusiness","Electrician"],
+        "@type": [
+          "LocalBusiness",
+          "Electrician"
+        ],
         "@id": "https://mecua.netlify.app/#business",
         "name": "МЕС — електромонтажні роботи Київ та Київська область",
         "url": "https://mecua.netlify.app",
         "telephone": "+380985212269",
         "email": "mec.lls@ukr.net",
-        "areaServed": [{"@type":"City","name":"Київ"},{"@type":"AdministrativeArea","name":"Київська область"},{"@type":"Country","name":"Україна"}]
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Київ"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Київська область"
+          },
+          {
+            "@type": "Country",
+            "name": "Україна"
+          }
+        ],
+        "sameAs": [
+          "https://www.tiktok.com/@mec.in.ua"
+        ],
+        "logo": "https://mecua.netlify.app/icon-512.png",
+        "image": "https://mecua.netlify.app/icon-512.png",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 50.4014,
+          "longitude": 30.3288
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Софіївська Борщагівка",
+          "addressRegion": "Київська область",
+          "addressCountry": "UA"
+        }
       }
     ]
   }

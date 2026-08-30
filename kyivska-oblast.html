@@ -1140,27 +1140,89 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {"@type":"ListItem","position":1,"name":"Головна","item":"https://mecua.netlify.app/"},
-          {"@type":"ListItem","position":2,"name":"Київська область","item":"https://mecua.netlify.app/kyivska-oblast"}
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Головна",
+            "item": "https://mecua.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Київська область",
+            "item": "https://mecua.netlify.app/kyivska-oblast"
+          }
         ]
       },
       {
         "@type": "Service",
         "name": "Електромонтажні роботи Київська область",
-        "provider": { "@id": "https://mecua.netlify.app/#organization" },
-        "areaServed": ["Київська область", "Бровари", "Бориспіль", "Ірпінь", "Буча", "Вишгород", "Обухів", "Васильків", "Біла Церква"],
-        "availableLanguage": ["uk", "ru"],
-        "serviceType": ["електромонтаж Київська область", "монтаж КТП Київська область", "електролабораторія Київська область", "кабельні лінії Київська область"],
+        "provider": {
+          "@id": "https://mecua.netlify.app/#organization"
+        },
+        "areaServed": [
+          "Київська область",
+          "Бровари",
+          "Бориспіль",
+          "Ірпінь",
+          "Буча",
+          "Вишгород",
+          "Обухів",
+          "Васильків",
+          "Біла Церква"
+        ],
+        "availableLanguage": [
+          "uk",
+          "ru"
+        ],
+        "serviceType": [
+          "електромонтаж Київська область",
+          "монтаж КТП Київська область",
+          "електролабораторія Київська область",
+          "кабельні лінії Київська область"
+        ],
         "url": "https://mecua.netlify.app/kyivska-oblast"
       },
       {
-        "@type": ["LocalBusiness","Electrician"],
+        "@type": [
+          "LocalBusiness",
+          "Electrician"
+        ],
         "@id": "https://mecua.netlify.app/#business",
         "name": "МЕС — електромонтажні роботи Київ та Київська область",
         "url": "https://mecua.netlify.app",
         "telephone": "+380985212269",
         "email": "mec.lls@ukr.net",
-        "areaServed": [{"@type":"City","name":"Київ"},{"@type":"AdministrativeArea","name":"Київська область"},{"@type":"Country","name":"Україна"}]
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Київ"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Київська область"
+          },
+          {
+            "@type": "Country",
+            "name": "Україна"
+          }
+        ],
+        "sameAs": [
+          "https://www.tiktok.com/@mec.in.ua"
+        ],
+        "logo": "https://mecua.netlify.app/icon-512.png",
+        "image": "https://mecua.netlify.app/icon-512.png",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 50.4014,
+          "longitude": 30.3288
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Софіївська Борщагівка",
+          "addressRegion": "Київська область",
+          "addressCountry": "UA"
+        }
       }
     ]
   }
