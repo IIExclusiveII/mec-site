@@ -2,82 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mecua.netlify.app/</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mecua.netlify.app/poslugy.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <loc>https://mecua.netlify.app/poslugy</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://mecua.netlify.app/pro-nas.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <loc>https://mecua.netlify.app/elektromontazh-kyiv</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/elektrolaboratoriya-kyiv</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/kabelni-linii-kyiv</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/montazh-tp-ktp-kyiv</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/zazemlennya-bliskavkozahyst-kyiv</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/avariynyy-remont-elektryky-kyiv</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/kyivska-oblast</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/pro-nas</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mecua.netlify.app/galereya.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <loc>https://mecua.netlify.app/kontakty</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/faq-elektromontazh-kyiv</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mecua.netlify.app/galereya</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://mecua.netlify.app/kontakty.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mecua.netlify.app/faq-elektromontazh-kyiv.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mecua.netlify.app/elektromontazh-kyiv.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://mecua.netlify.app/elektrolaboratoriya-kyiv.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://mecua.netlify.app/kabelni-linii-kyiv.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://mecua.netlify.app/montazh-tp-ktp-kyiv.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://mecua.netlify.app/zazemlennya-bliskavkozahyst-kyiv.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://mecua.netlify.app/avariynyy-remont-elektryky-kyiv.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://mecua.netlify.app/kyivska-oblast.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url><loc>https://mecua.netlify.app/blog.html</loc><lastmod>2026-08-29</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mecua.netlify.app/blog/2026-08-29-yak-obraty-pereriz-kabelyu.html</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://mecua.netlify.app/blog</loc><lastmod>2026-08-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mecua.netlify.app/blog/2026-08-29-yak-obraty-pereriz-kabelyu</loc><lastmod>2026-08-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

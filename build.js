@@ -87,8 +87,9 @@ function patchHead(head, { title, description, url, image, extraCss, jsonld }) {
   h = h.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/gi, "");
   h = h.replace(/<\/head>/i, `${extraCss || ""}${jsonld ? `<script type="application/ld+json">${jsonld}</script>\n` : ""}</head>`);
   // remove "active" nav highlight inherited from pro-nas
-  h = h.replace(/(<a[^>]*href="\/pro-nas\.html"[^>]*)\sclass="active"/g, "$1");
-  h = h.replace(/(<a[^>]*href="\/pro-nas\.html"[^>]*class="[^"]*)\sactive/g, "$1");
+  h = h.replace(/(<a[^>]*href="\/pro-nas"[^>]*)\sclass="active"/g, "$1");
+  h = h.replace(/(<a[^>]*href="\/pro-nas"[^>]*class="[^"]*)\sactive/g, "$1");
+  h = h.replace(/(<a[^>]*href="\/pro-nas"[^>]*class="mm-link) active(")/g, "$1$2");
   return h;
 }
 
@@ -113,8 +114,8 @@ function loadPosts() {
       const slug = f.replace(/\.md$/, "");
       return {
         slug,
-        url: `${SITE}/blog/${slug}.html`,
-        path: `/blog/${slug}.html`,
+        url: `${SITE}/blog/${slug}`,
+        path: `/blog/${slug}`,
         title: parsed.data.title || slug,
         date: parsed.data.date || "",
         description: parsed.data.description || "",
@@ -150,7 +151,7 @@ function renderPost(p) {
   });
   const content = `<section class="page-hero post-hero">
   <div class="container">
-    <div class="breadcrumb"><a href="/">Головна</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg><a href="/blog.html">Блог</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg><span>${esc(p.title)}</span></div>
+    <div class="breadcrumb"><a href="/">Головна</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg><a href="/blog">Блог</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg><span>${esc(p.title)}</span></div>
     <div class="section-label">Стаття</div>
     <h1 class="section-title" style="font-size:clamp(26px,4vw,44px)">${esc(p.title)}</h1>
     <div class="post-meta">${esc(fmtDate(p.date))}${p.date ? " · " : ""}${esc(readingTime(p.bodyMd))}</div>
@@ -160,7 +161,7 @@ function renderPost(p) {
   <div class="container">
     ${p.cover ? `<img class="post-cover" src="${esc(p.cover)}" alt="${esc(p.title)}" loading="lazy">` : ""}
     <div class="post-body">${bodyHtml}</div>
-    <p style="margin-top:48px"><a href="/blog.html" class="btn-outline">&#8592; Усі статті</a></p>
+    <p style="margin-top:48px"><a href="/blog" class="btn-outline">&#8592; Усі статті</a></p>
   </div>
 </section>
 `;
@@ -189,14 +190,14 @@ function renderIndex(posts) {
   const head = patchHead(SHELL_HEAD, {
     title: "Блог про електромонтаж — поради, стандарти, кейси | МЕС",
     description: "Статті ТОВ «МОНТАЖЕНЕРГОСИСТЕМ»: кабельні лінії, трансформаторні підстанції, електролабораторія, заземлення — практичні поради та розбори.",
-    url: SITE + "/blog.html",
+    url: SITE + "/blog",
     image: SITE + "/og-image.png",
     extraCss: POST_CSS,
     jsonld: JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Blog",
       name: "Блог МЕС",
-      url: SITE + "/blog.html",
+      url: SITE + "/blog",
       publisher: { "@type": "Organization", name: "МЕС" },
     }),
   });
@@ -266,7 +267,7 @@ function updateSitemap(posts) {
   let xml = read(sp).replace(/\s*<url>\s*<loc>[^<]*\/blog[^<]*<\/loc>[\s\S]*?<\/url>/g, "");
   const today = new Date().toISOString().slice(0, 10);
   const entries = [
-    `  <url><loc>${SITE}/blog.html</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
+    `  <url><loc>${SITE}/blog</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
     ...posts.map(
       (p) => `  <url><loc>${p.url}</loc><lastmod>${(p.date && new Date(p.date).toISOString().slice(0, 10)) || today}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`
     ),

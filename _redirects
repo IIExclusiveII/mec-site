@@ -1,13 +1,28 @@
-/poslugy /poslugy.html 301
-/pro-nas /pro-nas.html 301
-/galereya /galereya.html 301
-/kontakty /kontakty.html 301
-/index /index.html 301
-/elektromontazh /elektromontazh-kyiv.html 301
-/elektrolaboratoriya /elektrolaboratoriya-kyiv.html 301
-/kabelni-linii /kabelni-linii-kyiv.html 301
-/montazh-tp /montazh-tp-ktp-kyiv.html 301
-/zazemlennya /zazemlennya-bliskavkozahyst-kyiv.html 301
-/avariynyy-remont /avariynyy-remont-elektryky-kyiv.html 301
-/kyivska-oblast-elektromontazh /kyivska-oblast.html 301
-/faq /faq-elektromontazh-kyiv.html 301
+# ── Consolidate every page on ONE canonical URL (no .html) ──────────────
+# A request for the .html version 301s to the clean URL, which Netlify then
+# serves from the same file. Keeps Google from splitting signals between
+# /poslugy and /poslugy.html.
+/index.html                              /                                  301!
+/poslugy.html                            /poslugy                           301!
+/pro-nas.html                            /pro-nas                           301!
+/galereya.html                           /galereya                          301!
+/kontakty.html                           /kontakty                          301!
+/blog.html                               /blog                              301!
+/faq-elektromontazh-kyiv.html            /faq-elektromontazh-kyiv           301!
+/elektromontazh-kyiv.html                /elektromontazh-kyiv               301!
+/elektrolaboratoriya-kyiv.html           /elektrolaboratoriya-kyiv          301!
+/kabelni-linii-kyiv.html                 /kabelni-linii-kyiv                301!
+/montazh-tp-ktp-kyiv.html                /montazh-tp-ktp-kyiv               301!
+/zazemlennya-bliskavkozahyst-kyiv.html   /zazemlennya-bliskavkozahyst-kyiv  301!
+/avariynyy-remont-elektryky-kyiv.html    /avariynyy-remont-elektryky-kyiv   301!
+/kyivska-oblast.html                     /kyivska-oblast                    301!
+
+# ── Short SEO-friendly aliases → canonical page ─────────────────────────
+/elektromontazh                          /elektromontazh-kyiv               301
+/elektrolaboratoriya                     /elektrolaboratoriya-kyiv          301
+/kabelni-linii                           /kabelni-linii-kyiv               301
+/montazh-tp                              /montazh-tp-ktp-kyiv              301
+/zazemlennya                             /zazemlennya-bliskavkozahyst-kyiv  301
+/avariynyy-remont                        /avariynyy-remont-elektryky-kyiv   301
+/kyivska-oblast-elektromontazh           /kyivska-oblast                    301
+/faq                                     /faq-elektromontazh-kyiv           301
