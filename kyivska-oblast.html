@@ -94,7 +94,7 @@
     #nav.scrolled{background:rgba(6,10,16,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom-color:rgba(232,160,32,.15)}
     .nav-inner{max-width:1280px;margin:0 auto;padding:0 20px;height:72px;display:flex;align-items:center;justify-content:space-between}
     .logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
-    .logo-icon{width:44px;height:44px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;position:relative;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);background:rgba(232,160,32,.1);overflow:hidden}
+    .logo-icon{width:44px;height:44px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;position:relative;border-radius:50%;background:var(--bg2);box-shadow:0 0 0 6px rgba(232,160,32,.18),0 2px 8px rgba(0,0,0,.4);overflow:hidden}
     .logo-icon::before{content:'';position:absolute;inset:-50%;background:linear-gradient(45deg,transparent 30%,rgba(232,160,32,.4) 50%,transparent 70%);animation:logoShine 3s ease-in-out infinite}
     .logo-icon svg{width:22px;height:22px;color:var(--gold);position:relative;z-index:1;animation:logoPulse 2s ease-in-out infinite}
     @keyframes logoShine{0%{transform:translateX(-100%) rotate(45deg)}50%,100%{transform:translateX(100%) rotate(45deg)}}
