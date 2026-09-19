@@ -913,7 +913,7 @@
     .works-map .mes-cl-gold .mes-cl-halo{background:rgba(232,160,32,.22)}
     .works-map .mes-cl-gold .mes-cl-core{border:2px solid var(--gold)}
     .works-map .mes-cl-cyan .mes-cl-halo{background:rgba(0,200,232,.22)}
-    .works-map .mes-cl-cyan .mes-cl-core{border:2px solid var(--cyan)}
+    .works-map .mes-cl-cyan .mes-cl-core{border:2px solid var(--cyan);background:#0e5f86}
     .works-map .mes-pin svg{width:28px;height:34px;display:block;filter:drop-shadow(0 3px 4px rgba(0,0,0,.5))}
     .works-map .leaflet-marker-icon.mes-cl,.works-map .leaflet-marker-icon.mes-pin{transition:none}
     @media(max-width:768px){.works-map{height:360px}}
@@ -1709,7 +1709,7 @@ function wmCacheRead(){try{return JSON.parse(localStorage.getItem(WM_CACHE_KEY)|
 function wmCacheWrite(o){try{localStorage.setItem(WM_CACHE_KEY,JSON.stringify(o))}catch(e){}}
 function wmItemKey(it){return String(it.location||it.address||'').trim()}
 const WM_PIN_SVG='<svg viewBox="0 0 34 42" aria-hidden="true"><path d="M17 41C17 41 3 26 3 15a14 14 0 0 1 28 0C31 26 17 41 17 41z" fill="#0e5f86" stroke="#00c8e8" stroke-width="2.5"/><path d="M18.5 8L10 19h6l-1 8 9-11h-6z" fill="#e8a020"/></svg>';
-// Cluster bubble: gold up to 1000 points, cyan and larger above that.
+// Cluster bubble: blue up to 1000 points, gold and larger above that.
 function wmClusterIcon(cl){
   const n=cl.getChildCount();
   const big=n>1000;
@@ -1717,7 +1717,7 @@ function wmClusterIcon(cl){
   const label=n>=1000?String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' '):n;
   return L.divIcon({
     html:'<div class="mes-cl-halo"><span class="mes-cl-core">'+label+'</span></div>',
-    className:'mes-cl '+(big?'mes-cl-cyan':'mes-cl-gold'),
+    className:'mes-cl '+(big?'mes-cl-gold':'mes-cl-cyan'),
     iconSize:[size,size]
   });
 }
